@@ -20,11 +20,16 @@ class User extends Authenticatable
 
     protected $table = 'user';
     protected $primaryKey = 'iduser';
+    
+    // PERBAIKAN 1: Sesuaikan dengan DB Anda (nama)
     protected $fillable = [
-        'name',
+        'nama', // Bukan 'name'
         'email',
         'password',
     ];
+
+    // PERBAIKAN 2: Tambahkan ini karena tabel 'user' Anda tidak punya timestamps
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for serialization.
@@ -59,5 +64,15 @@ class User extends Authenticatable
         // Parameter: Model, tabel pivot, foreign key model ini, foreign key model join
         return $this->belongsToMany(Role::class, 'role_user', 'iduser', 'idrole')
                     ->withPivot('status'); // Ambil juga kolom 'status' dari tabel pivot
+    }
+
+    // PERBAIKAN 3: TAMBAHKAN RELASI INI (Sesuai Modul 10, Hal 6)
+    /**
+     * Relasi ke model pivot RoleUser (One-to-Many)
+     * Ini yang dicari oleh LoginController
+     */
+    public function roleUser()
+    {
+        return $this->hasMany(RoleUser::class, 'iduser', 'iduser');
     }
 }
