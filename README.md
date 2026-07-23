@@ -1,61 +1,223 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<img src="screenshots/landing.jpeg" alt="RSHP Preview" width="49%"/> <img src="screenshots/admin.jpeg" alt="RSHP Admin" width="49%"/>
 
-## About Laravel
+<br/><br/>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# RSHP — Rumah Sakit Hewan Pendidikan Universitas Airlangga
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Aplikasi web untuk mengelola alur pelayanan klinik hewan secara digital, mulai dari pendaftaran pasien, asesmen perawat, pemeriksaan dokter, hingga rekam medis yang bisa diakses langsung oleh pemilik hewan.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<br/>
 
-## Learning Laravel
+[![Laravel](https://img.shields.io/badge/Laravel-11-FF2D20?style=flat-square&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=flat-square&logo=php&logoColor=white)](https://php.net)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://mysql.com)
+[![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)](LICENSE)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<sub>Tugas Akhir Mata Kuliah Pengembangan Perangkat Lunak Web (Framework)</sub>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+</div>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Tentang Proyek
 
-## Laravel Sponsors
+RSHP adalah aplikasi web untuk mengelola seluruh alur pelayanan rumah sakit hewan pendidikan secara digital. Sistem ini menggunakan **Role-Based Access Control (RBAC)** sehingga setiap pengguna hanya bisa mengakses bagian yang sesuai dengan perannya.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+| Role | Akses Utama |
+|------|-------------|
+| **Administrator** | Mengelola seluruh data master sistem (user, role, jenis hewan, ras, kategori tindakan) |
+| **Resepsionis** | Mendaftarkan pemilik dan hewan baru, mengelola antrian kunjungan |
+| **Perawat** | Melakukan asesmen awal dan membuat rekam medis pasien hewan |
+| **Dokter** | Memeriksa pasien, mengisi diagnosis, merencanakan tindakan terapi |
+| **Pemilik Hewan** | Booking kunjungan secara mandiri dan melihat riwayat medis hewan |
 
-### Premium Partners
+## Teknologi
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Dibangun menggunakan **Laravel 11** dengan **PHP 8.2+**, database **MySQL**, dan **Blade** sebagai template engine. Autentikasi menggunakan session-based custom auth tanpa package tambahan.
 
-## Contributing
+## Fitur per Role
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<details>
+<summary><strong>Administrator</strong></summary>
+<br/>
 
-## Code of Conduct
+- CRUD Data User dan Role
+- CRUD Jenis Hewan dan Ras Hewan
+- CRUD Kategori Layanan dan Kategori Klinis
+- CRUD Master Kode Tindakan Terapi
+- Pemantauan data Pemilik dan Pet terdaftar
+- Dashboard statistik sistem (total user, pemilik, pet, transaksi)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+</details>
 
-## Security Vulnerabilities
+<details>
+<summary><strong>Resepsionis</strong></summary>
+<br/>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Registrasi pemilik hewan beserta pembuatan akun login otomatis
+- Registrasi hewan peliharaan (jenis, ras, identitas fisik)
+- Pembuatan jadwal antrian temu dokter dengan nomor urut otomatis per hari
+- Pemantauan status seluruh antrian kunjungan
 
-## License
+</details>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<details>
+<summary><strong>Perawat</strong></summary>
+<br/>
+
+- Melihat antrian pasien hari ini yang belum diasesmen
+- Membuat rekam medis berupa Anamnesa dan Temuan Klinis
+- Edit asesmen selama dokter belum mengisi tindakan
+- Riwayat rekam medis dengan filter bulan dan tanggal spesifik
+- Hapus rekam medis (hanya jika belum ada tindakan dari dokter)
+
+</details>
+
+<details>
+<summary><strong>Dokter</strong></summary>
+<br/>
+
+- Melihat daftar pasien hari ini yang sudah diasesmen perawat
+- Review anamnesa dan temuan klinis dari perawat
+- Input diagnosis dan temuan klinis dokter
+- Tambah, edit, dan hapus tindakan atau terapi dari master Kode Tindakan
+- Input instruksi detail pelaksanaan tindakan
+- Tandai pemeriksaan **Selesai** (diagnosis wajib terisi)
+
+</details>
+
+<details>
+<summary><strong>Pemilik Hewan</strong></summary>
+<br/>
+
+- Lihat daftar dan detail hewan peliharaan milik sendiri
+- Booking jadwal temu dokter secara mandiri
+- Batalkan kunjungan yang masih berstatus Menunggu
+- Riwayat rekam medis lengkap: diagnosa, tindakan, nama dokter (read-only)
+
+</details>
+
+## Alur Penggunaan
+
+1. Resepsionis mendaftarkan pemilik hewan beserta akun loginnya, lalu mendaftarkan hewan peliharaannya
+2. Jadwal kunjungan dibuat oleh resepsionis atau langsung oleh pemilik hewan lewat portal mereka
+3. Perawat mengisi asesmen awal (anamnesa dan temuan klinis) untuk setiap pasien yang datang
+4. Dokter melakukan pemeriksaan, mengisi diagnosis dan rencana tindakan, lalu menyelesaikan kunjungan
+5. Pemilik hewan bisa melihat hasil pemeriksaan kapan saja lewat portalnya
+
+Status kunjungan di sistem ada tiga: **Menunggu** saat jadwal baru dibuat, **Selesai** setelah dokter menyelesaikan pemeriksaan, dan **Batal** jika pemilik membatalkan jadwal.
+
+## Tampilan Aplikasi
+
+<div align="center">
+<img src="screenshots/landing.jpeg" width="80%" alt="Halaman Landing RSHP"/>
+<br/><sub>Halaman Publik</sub>
+</div>
+
+<br/>
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="screenshots/admin.jpeg" width="100%" alt="Dashboard Admin"/>
+      <sub>Dashboard Administrator</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="screenshots/resepsionis.jpeg" width="100%" alt="Antrian Resepsionis"/>
+      <sub>Antrian Temu Dokter (Resepsionis)</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="screenshots/perawat.jpeg" width="100%" alt="Asesmen Perawat"/>
+      <sub>Asesmen Pasien (Perawat)</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="screenshots/dokter.jpeg" width="100%" alt="Daftar Pasien Dokter"/>
+      <sub>Daftar Pasien Hari Ini (Dokter)</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="screenshots/pemilik.jpeg" width="100%" alt="Dashboard Pemilik"/>
+      <sub>Dashboard Pemilik Hewan</sub>
+    </td>
+    <td></td>
+  </tr>
+</table>
+
+## Skema Database
+
+```
+user ──── role_user ──── role
+ │
+pemilik
+ │
+pet ──── ras_hewan ──── jenis_hewan
+ │
+temu_dokter ──── role_user [Dokter]
+ │
+rekam_medis
+ │
+detail_rekam_medis ──── kode_tindakan_terapi ──── kategori
+                                              └─── kategori_klinis
+```
+
+| Tabel | Fungsi |
+|-------|--------|
+| `user` | Akun login semua pengguna |
+| `role` dan `role_user` | Mapping user ke role |
+| `pemilik` | Data pemilik hewan (alamat, no. WA) |
+| `jenis_hewan` dan `ras_hewan` | Master jenis dan ras hewan |
+| `pet` | Data hewan peliharaan |
+| `temu_dokter` | Jadwal dan antrian kunjungan |
+| `rekam_medis` | Header rekam medis (anamnesa, diagnosa) |
+| `detail_rekam_medis` | Baris tindakan atau obat per rekam medis |
+| `kode_tindakan_terapi` | Master kode tindakan dan terapi |
+| `kategori` dan `kategori_klinis` | Klasifikasi tindakan |
+
+## Cara Menjalankan
+
+Pastikan sudah menginstal PHP 8.2+, Composer, MySQL, dan Node.js.
+
+```bash
+git clone https://github.com/viesloxy/rshp_project.git
+cd rshp_project
+
+composer install
+npm install && npm run build
+
+cp .env.example .env
+php artisan key:generate
+```
+
+Buka file `.env` dan sesuaikan konfigurasi database:
+
+```env
+DB_DATABASE=rshp
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+```bash
+php artisan migrate
+php artisan serve
+```
+
+Buka `http://localhost:8000` di browser.
+
+## Akun Demo
+
+| Peran | Email | Password |
+|-------|-------|----------|
+| Administrator | vito@gmail.com | vito123 |
+| Resepsionis | loxy@gmail.com | loxy123 |
+| Perawat | vies@gmail.com | vies123 |
+| Dokter | naoko@gmail.com | naoko123 |
+| Pemilik Hewan | arata@gmail.com | arata123 |
+
+<br/>
+
+<div align="center">
+<sub>Dibangun dengan Laravel · Universitas Airlangga · 2025</sub>
+</div>
